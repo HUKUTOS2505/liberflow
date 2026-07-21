@@ -1,21 +1,22 @@
 # LiberFlow
 
-LiberFlow is LiberCode's internal system for managing technical projects,
-employees, sprints, development tasks, Kanban workflow, and time tracking. It
-will integrate with the company's cloud Bitrix24 portal while keeping technical
-delivery data inside LiberFlow.
+LiberFlow — внутренняя система LiberCode для управления техническими
+проектами, сотрудниками, спринтами, задачами разработки, Kanban-процессом и
+учётом рабочего времени. Система будет интегрирована с облачным порталом
+Битрикс24 компании, при этом данные о технической разработке останутся внутри
+LiberFlow.
 
-The repository is being built in small, verifiable daily packages. Day 1
-contains only the Django foundation and a health endpoint. PostgreSQL, Docker,
-business entities, the REST API, and Bitrix24 connectivity are intentionally
-not implemented yet.
+Проект разрабатывается небольшими проверяемыми дневными пакетами. Первый пакет
+содержит только базовую структуру Django и endpoint проверки состояния.
+PostgreSQL, Docker, бизнес-сущности, REST API и подключение к Битрикс24 пока
+намеренно не реализованы.
 
-## Requirements
+## Требования
 
-- Python 3.12 or newer
+- Python 3.12 или новее
 - Git
 
-## Local setup
+## Локальный запуск
 
 PowerShell:
 
@@ -37,12 +38,13 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-The development configuration has safe local defaults. `.env.example`
-documents the environment variable contract, but Day 1 does not add an env-file
-loader. Export variables in the shell when overriding the defaults. Environment
-and PostgreSQL handling will be completed in Day 2.
+Конфигурация разработки содержит безопасные локальные значения по умолчанию.
+Файл `.env.example` описывает переменные окружения, но загрузчик `.env` не
+входит в первый дневной пакет. Чтобы переопределить значения, экспортируйте
+переменные в текущей командной оболочке. Полноценная настройка окружения и
+PostgreSQL запланирована на второй дневной пакет.
 
-Open `http://127.0.0.1:8000/health/`. The response is:
+После запуска откройте `http://127.0.0.1:8000/health/`. Endpoint вернёт:
 
 ```json
 {
@@ -50,7 +52,7 @@ Open `http://127.0.0.1:8000/health/`. The response is:
 }
 ```
 
-## Quality checks
+## Проверки качества
 
 ```powershell
 python manage.py check
@@ -58,6 +60,6 @@ pytest
 ruff check .
 ```
 
-See [ROADMAP.md](ROADMAP.md) for delivery order,
-[ARCHITECTURE.md](ARCHITECTURE.md) for system boundaries, and
-[PROJECT_STATE.md](PROJECT_STATE.md) for the current handoff state.
+Порядок разработки описан в [ROADMAP.md](ROADMAP.md), границы системы — в
+[ARCHITECTURE.md](ARCHITECTURE.md), а текущее состояние проекта — в
+[PROJECT_STATE.md](PROJECT_STATE.md).
